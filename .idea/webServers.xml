@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5aa12aef-e307-42e1-9a8c-58128fbf83e3" name="spark">
+        <fileTransfer accessType="SFTP" host="192.168.88.161" port="22" sshConfigId="3ba7fac6-e41f-4c48-8eaf-a6f6b44310be" sshConfig="spark">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="a5a18b5b-170c-469b-b007-e0d27c19abe0" name="spark_外地">
+        <fileTransfer rootFolder="/export" accessType="SFTP" host="n33642674s.wicp.vip" port="23735" sshConfigId="041108f4-b84b-4be9-bde2-1bcf06f996ee" sshConfig="root@n33642674s.wicp.vip:23735 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

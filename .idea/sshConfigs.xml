@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="192.168.88.161" id="3ba7fac6-e41f-4c48-8eaf-a6f6b44310be" port="22" customName="spark" nameFormat="CUSTOM" username="root">
+        <option name="customName" value="spark" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>
