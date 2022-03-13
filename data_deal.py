@@ -30,8 +30,8 @@ def filter2(data):
     return data
 
 def filter3(data):
-    stander=joblib.load('模型/stander.m')
-    min_max_scaler=joblib.load('模型/min_max.m')
+    stander=joblib.load('model/stander.m')
+    min_max_scaler=joblib.load('model/min_max.m')
     char_x = data[['evil_char', 'evil_word']]
     char_x_done = min_max_scaler.transform(char_x)
     data[['evil_char', 'evil_word']] = char_x_done
@@ -67,14 +67,14 @@ if __name__ == '__main__':
 
     char_x=data[[ 'evil_char', 'evil_word']]
     min_max_scaler.fit(char_x)
-    joblib.dump(min_max_scaler, '模型/min_max.m')
+    joblib.dump(min_max_scaler, 'model/min_max.m')
     char_x_done= min_max_scaler.transform(char_x)
     data[[ 'evil_char', 'evil_word']]=char_x_done
 
     len_x=data[['len','shang']]
     clf.fit(len_x)
     len_x_done = clf.transform(len_x)
-    joblib.dump(clf, '模型/stander.m')
+    joblib.dump(clf, 'model/stander.m')
     data[['len','shang']]=len_x_done
 
     print(data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].describe())

@@ -26,13 +26,13 @@ if __name__ == '__main__':
     # word = normalword + xssword
     # # print(word[0:5])
     # label_list = ([0] * len(normalword) + [1] * len(xssword))
-    # f = open("模型/词向量组.pkl", 'rb')  # 预先训练好的
+    # f = open("model/v_group.pkl", 'rb')  # 预先训练好的
     # index_dict = pickle.load(f)
     # X_l = text_to_index_array(index_dict, word)
     # print(X_l)
     # y = np.array(label_list)
     maxlen = 350
-    tokenizer = joblib.load('模型/tokenizer.model')
+    tokenizer = joblib.load('model/tokenizer.model')
     X = tokenizer.texts_to_sequences(final_data['cut_words'].values)
     # 经过上一步操作后，X为整数构成的两层嵌套list
     X = sequence.pad_sequences(X, maxlen=maxlen)
@@ -40,7 +40,7 @@ if __name__ == '__main__':
     Y = pd.get_dummies(final_data['label']).values
     Y_tru=final_data['label']
     # X = sequence.pad_sequences(X_l, maxlen=maxlen, padding='post')
-    model = load_model('模型/词向量_model_LSTM.h5')
+    model = load_model('model/v_model_LSTM.h5')
     y_pre = model.predict(X)
     y_pre_list=[]
     for x in y_pre:

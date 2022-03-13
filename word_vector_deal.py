@@ -139,7 +139,7 @@ def train_lstm(p_n_symbols, p_X_train, p_y_train, p_X_test, p_y_test, X_test_l):
     show_train_history(train_history, 'loss', 'val_loss')  # 训练集误差率与验证集误差率 折线图
 
     """保存模型"""
-    model.save('模型/词向量_model_LSTM.h5')
+    model.save('model/v_model_LSTM.h5')
     print("模型保存成功")
 
 
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     # label_list = ([0] * len(normalword) + [1] * len(xssword))
     # X_train_l, X_test_l, y_train_l, y_test_l = train_test_split(word, label_list, test_size=0.4)
     # X_validation_l, X_test_l, y_validation_l, y_test_l = train_test_split(X_test_l, y_test_l, test_size=0.5)
-    # f = open("模型/词向量组.pkl", 'rb')  # 预先训练好的
+    # f = open("model/v_group.pkl", 'rb')  # 预先训练好的
     # index_dict = pickle.load(f)  # 索引字典，{单词: 索引数字}
     # word_vectors = pickle.load(f)  # 词向量, {单词: 词向量(100维长的数组)}
     #
@@ -194,5 +194,5 @@ if __name__ == '__main__':
 
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
     print(X_train.shape)
-    joblib.dump(filename='模型/tokenizer.model', value=tokenizer)
+    joblib.dump(filename='model/tokenizer.model', value=tokenizer)
     train_lstm(30000, X_train, y_train, X_test, y_test, X_test)

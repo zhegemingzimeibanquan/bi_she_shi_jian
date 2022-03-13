@@ -70,7 +70,7 @@ if __name__ == '__main__':
     # log_dir = './search_housing_LSTM_logs'
     # if not os.path.exists(log_dir):
     #     os.mkdir(log_dir)
-    # save_model_dir = './模型'
+    # save_model_dir = './model'
     # if not os.path.exists(save_model_dir):
     #     os.mkdir(save_model_dir)
     # save_model_file = os.path.join(save_model_dir, 'search_housing_LSTM.h5')

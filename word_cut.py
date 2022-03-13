@@ -113,13 +113,13 @@ if __name__ == '__main__':
     word = xssword + normalword
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)  # 将日志输出到控制台
     model = word2vec.Word2Vec(word, vector_size=128, sg=0, window=10)
-    model.save('模型/word2vec_v1.model')
+    model.save('model/word2vec_v1.model')
     index_dict, word_vectors = create_dictionaries(model)
     print(index_dict)
     print('\n')
     # print(word_vectors)
-    # model = word2vec.Word2Vec.load('模型/word2vec_v1.model')
-    output = open("模型/词向量组.pkl", 'wb')
+    # model = word2vec.Word2Vec.load('model/word2vec_v1.model')
+    output = open("model/v_group.pkl", 'wb')
     pickle.dump(index_dict, output)  # 索引字典
     pickle.dump(word_vectors, output)  # 词向量字典
     output.close()

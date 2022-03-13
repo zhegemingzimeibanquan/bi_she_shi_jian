@@ -11,7 +11,7 @@ from word_vector_deal import creat_data
 
 if __name__ == '__main__':
     data = creat_data()
-    tokenizer = joblib.load('模型/tokenizer.model')
+    tokenizer = joblib.load('model/tokenizer.model')
     maxlen = 350
     X = tokenizer.texts_to_sequences(data['cut_words'].values)
     X = sequence.pad_sequences(X, maxlen=maxlen)
@@ -25,7 +25,7 @@ if __name__ == '__main__':
         n_iter=10, n_jobs=7,
         cv=3)
     random_search_cv.fit(X, y)
-    # joblib.dump(clf, '模型/词向量-svm-model.m')
+    # joblib.dump(clf, 'model/v-svm-model.m')
     # y_pred = clf.predict(test_x)
     # print(classification_report(test_y, y_pred))
     print(random_search_cv.best_params_)
