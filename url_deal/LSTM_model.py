@@ -115,7 +115,19 @@ if __name__ == '__main__':
     # # 获得最好的模型
     # model = random_search_cv.best_estimator_
     # y_pre = model.predict(test_x)
-    # print(classification_report(test_y, y_pre))
+    # Y_tru = []
+    # y_pre_list = []
+    # for x in y_pred:
+    #     if (x[0] > x[1]):
+    #         y_pre_list.append(0)
+    #     else:
+    #         y_pre_list.append(1)
+    # for x in test_y:
+    #     if (x[0] > x[1]):
+    #         Y_tru.append(0)
+    #     else:
+    #         Y_tru.append(1)
+    # print(classification_report(Y_tru, y_pre_list))
     # loss, acc = model.evaluate(test_x, test_y)
     # print("loss:",loss)
     # print("acc:",acc)
