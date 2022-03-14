@@ -30,8 +30,8 @@ def filter2(data):
     return data
 
 def filter3(data):
-    stander=joblib.load('model/stander.m')
-    min_max_scaler=joblib.load('model/min_max.m')
+    stander=joblib.load('../model/stander.m')
+    min_max_scaler=joblib.load('../model/min_max.m')
     char_x = data[['evil_char', 'evil_word']]
     char_x_done = min_max_scaler.transform(char_x)
     data[['evil_char', 'evil_word']] = char_x_done
@@ -41,7 +41,7 @@ def filter3(data):
     return data
 
 if __name__ == '__main__':
-    data = pd.read_csv('data/train_data.csv')
+    data = pd.read_csv('../data/train_data.csv')
     #print(data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].describe())
     df1=data[['len','label']]
     data.drop(data[data['evil_char'] > 9].index, inplace=True)
@@ -67,14 +67,14 @@ if __name__ == '__main__':
 
     char_x=data[[ 'evil_char', 'evil_word']]
     min_max_scaler.fit(char_x)
-    joblib.dump(min_max_scaler, 'model/min_max.m')
+    joblib.dump(min_max_scaler, '../model/min_max.m')
     char_x_done= min_max_scaler.transform(char_x)
     data[[ 'evil_char', 'evil_word']]=char_x_done
 
     len_x=data[['len','shang']]
     clf.fit(len_x)
     len_x_done = clf.transform(len_x)
-    joblib.dump(clf, 'model/stander.m')
+    joblib.dump(clf, '../model/stander.m')
     data[['len','shang']]=len_x_done
 
     print(data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].describe())

@@ -2,14 +2,13 @@ import joblib
 import pandas as pd
 from keras.models import load_model
 from keras.preprocessing import sequence
-from keras_preprocessing.text import Tokenizer
 from sklearn.metrics import classification_report
-import data_try as dt
+from url_deal import data_try as dt
 from word_cut import GeneSeg
 
 if __name__ == '__main__':
-    data_normal = pd.read_table('data/test_normal.txt', header=None)
-    data_xss = pd.read_table('data/test_xss.txt', header=None)
+    data_normal = pd.read_table('../data/test_normal.txt', header=None)
+    data_xss = pd.read_table('../data/test_xss.txt', header=None)
     re_data_xss = dt.reversed_code(data_xss)
     re_data_normal = dt.reversed_code(data_normal)
     data_set = pd.DataFrame(columns=['url', 'cut_words', 'label'])
@@ -32,7 +31,7 @@ if __name__ == '__main__':
     # print(X_l)
     # y = np.array(label_list)
     maxlen = 350
-    tokenizer = joblib.load('model/tokenizer.model')
+    tokenizer = joblib.load('../model/tokenizer.model')
     X = tokenizer.texts_to_sequences(final_data['cut_words'].values)
     # 经过上一步操作后，X为整数构成的两层嵌套list
     X = sequence.pad_sequences(X, maxlen=maxlen)
@@ -40,7 +39,7 @@ if __name__ == '__main__':
     Y = pd.get_dummies(final_data['label']).values
     Y_tru=final_data['label']
     # X = sequence.pad_sequences(X_l, maxlen=maxlen, padding='post')
-    model = load_model('model/v_model_LSTM.h5')
+    model = load_model('../model/v_model_LSTM.h5')
     y_pre = model.predict(X)
     y_pre_list=[]
     for x in y_pre:

@@ -33,7 +33,7 @@ def build_model(hidden_layers,
 
 
 if __name__ == '__main__':
-    data = pd.read_csv('data/final_data_v1.csv')
+    data = pd.read_csv('../data/final_data_v1.csv')
     X = data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']]
     X = X.values.reshape(32266, 1, 5)
     y = pd.get_dummies(data['label']).values

@@ -11,7 +11,7 @@ from word_vector_deal import creat_data
 
 if __name__ == '__main__':
     data = creat_data()
-    tokenizer = joblib.load('model/tokenizer.model')
+    tokenizer = joblib.load('../model/tokenizer.model')
     maxlen = 350
     X = tokenizer.texts_to_sequences(data['cut_words'].values)
     X = sequence.pad_sequences(X, maxlen=maxlen)

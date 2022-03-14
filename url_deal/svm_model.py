@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
 if __name__ == '__main__':
-    data = pd.read_csv('data/final_data_v1.csv')
+    data = pd.read_csv('../data/final_data_v1.csv')
     X = data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']]
     # print(X.describe())
     y = data['label']

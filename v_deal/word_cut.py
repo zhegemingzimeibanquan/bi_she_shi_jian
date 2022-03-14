@@ -8,7 +8,7 @@ import pandas as pd
 from gensim.corpora import Dictionary
 from gensim.models import word2vec
 
-import data_try as dt
+from url_deal import data_try as dt
 
 
 # re.sub(',', '', x)
@@ -85,8 +85,8 @@ def word_colle(data):
 
 
 if __name__ == '__main__':
-    data_normal = pd.read_table('data/train_normal.txt', header=None)
-    data_xss = pd.read_table('data/train_xss.txt', header=None)
+    data_normal = pd.read_table('../data/train_normal.txt', header=None)
+    data_xss = pd.read_table('../data/train_xss.txt', header=None)
     re_data_xss = dt.reversed_code(data_xss)
     re_data_normal = dt.reversed_code(data_normal)
     data_set = pd.DataFrame(columns=['url', 'cut_words', 'label'])
@@ -119,7 +119,7 @@ if __name__ == '__main__':
     print('\n')
     # print(word_vectors)
     # model = word2vec.Word2Vec.load('model/word2vec_v1.model')
-    output = open("model/v_group.pkl", 'wb')
+    output = open("../model/v_group.pkl", 'wb')
     pickle.dump(index_dict, output)  # 索引字典
     pickle.dump(word_vectors, output)  # 词向量字典
     output.close()

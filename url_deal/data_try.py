@@ -3,7 +3,7 @@ from urllib import parse
 
 import pandas as pd
 
-import url_futher as myfu
+from url_deal import url_futher as myfu
 
 
 def reversed_code(url_string_data):
@@ -37,8 +37,8 @@ def step1(xss, normal):
 
 
 if __name__ == '__main__':
-    data_normal = pd.read_table('data/train_normal.txt', header=None)
-    data_xss = pd.read_table('data/train_xss.txt', header=None)
+    data_normal = pd.read_table('../data/train_normal.txt', header=None)
+    data_xss = pd.read_table('../data/train_xss.txt', header=None)
 
     re_data_xss = reversed_code(data_xss)
     re_data_normal = reversed_code(data_normal)

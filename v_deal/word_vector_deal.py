@@ -9,7 +9,7 @@ from keras.preprocessing.text import Tokenizer
 from matplotlib import pyplot as plt
 from sklearn.model_selection import train_test_split
 
-import data_try as dt
+from url_deal import data_try as dt
 from word_cut import GeneSeg
 
 
@@ -39,8 +39,8 @@ def text_to_index_array(p_new_dic, p_sen):
 
 
 def creat_data():
-    data_normal = pd.read_table('data/train_normal.txt', header=None)
-    data_xss = pd.read_table('data/train_xss.txt', header=None)
+    data_normal = pd.read_table('../data/train_normal.txt', header=None)
+    data_xss = pd.read_table('../data/train_xss.txt', header=None)
     re_data_xss = dt.reversed_code(data_xss)
     re_data_normal = dt.reversed_code(data_normal)
     data_set = pd.DataFrame(columns=['url', 'cut_words', 'label'])
@@ -52,8 +52,8 @@ def creat_data():
     final_data = pd.concat([data_set, data_set1], axis=0, ignore_index=True)
     final_data['cut_words'] = final_data['url'].apply(lambda x: GeneSeg(x))
 
-    data_normal_X = pd.read_table('data/validation_normal.txt', header=None)
-    data_xss_X = pd.read_table('data/validation_xss.txt', header=None)
+    data_normal_X = pd.read_table('../data/validation_normal.txt', header=None)
+    data_xss_X = pd.read_table('../data/validation_xss.txt', header=None)
     re_data_xss_x = dt.reversed_code(data_xss_X)
     re_data_normal_x = dt.reversed_code(data_normal_X)
     data_set_x = pd.DataFrame(columns=['url', 'cut_words', 'label'])
@@ -194,5 +194,5 @@ if __name__ == '__main__':
 
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
     print(X_train.shape)
-    joblib.dump(filename='model/tokenizer.model', value=tokenizer)
+    joblib.dump(filename='../model/tokenizer.model', value=tokenizer)
     train_lstm(30000, X_train, y_train, X_test, y_test, X_test)
