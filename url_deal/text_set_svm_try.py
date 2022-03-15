@@ -13,9 +13,10 @@ if __name__ == '__main__':
     data = dd.filter3(data)
     X = data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']]
     y = data['label']
+    print(data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].describe())
+    data.to_csv('./final_data_v1_test.csv')
 
     clf = joblib.load('../model/xss-svm-model.m')
     y_pre = clf.predict(X)
-
 
     print(classification_report(y, y_pre))
