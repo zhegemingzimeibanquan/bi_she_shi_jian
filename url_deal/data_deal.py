@@ -82,4 +82,4 @@ if __name__ == '__main__':
     data[['len', 'shang']] = len_x_done
 
     print(data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].describe())
-    # data.to_csv('data/final_data_v1.csv')
+    data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].to_csv('../data/final_data_v1.csv')

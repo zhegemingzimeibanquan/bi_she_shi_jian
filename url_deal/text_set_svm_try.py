@@ -14,7 +14,7 @@ if __name__ == '__main__':
     X = data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']]
     y = data['label']
     print(data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].describe())
-    data.to_csv('./final_data_v1_test.csv')
+    data[['len', 'url_count', 'evil_char', 'evil_word', 'shang']].to_csv('../data/final_data_v1_test.csv')
 
     clf = joblib.load('../model/xss-svm-model.m')
     y_pre = clf.predict(X)
