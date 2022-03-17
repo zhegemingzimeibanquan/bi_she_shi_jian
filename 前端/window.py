@@ -65,5 +65,5 @@ if __name__ == '__main__':
     lb4 = Label(root, font=('华文新魏', 16), width=20, height=2)
     lb4.grid(column=4, row=4)
     btn1 = Button(root, text='submit', command=run)
-    btn1.grid(column=3, row=5, columnspan=3)
+    btn1.grid(column=2, row=5, columnspan=3)
     root.mainloop()
