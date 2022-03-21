@@ -1,0 +1,21 @@
+create table data_v1(len float), url_count float, evil_char float, evil_word float,shang float, label INTEGER) row format delimited fields terminated by ',';
+
+load data  local inpath  '/export/project/svm_web/data/final_data_v1.csv' into table data_v1;
+
+/export/server/spark/bin/spark-submit \
+--files /export/server/hive/conf/hive-site.xml \
+--master yarn \
+--driver-memory 512m \
+--executor-memory 512m \
+--executor-cores 1 \
+--num-executors 2 \
+--queue default \
+--conf "spark.pyspark.driver.python=/root/anaconda3/bin/python3" \
+--conf "spark.pyspark.python=/root/anaconda3/bin/python3" \
+/export/project/svm_web/svm_test.py 
+
+.config("hive.metastore.uris", "thrift://node1:9083")
+.config("spark.sql.warehouse.dir", file:/export/server/spark-3.1.2-bin-hadoop3.2/spark-warehouse) 
+
+D:\anaconda3\Lib\site-packages
+Pyinstaller -D -w -n xss_find --icon=前端/favicon.ico  -p D:\anaconda3\Lib\site-packages --add-data 'D:\python文件\aa\stander.m;.' --add-data 'D:\python文件\aa\tokenizer.model;.' --add-data 'D:\python文件\aa\v_model_LSTM.h5;.' --add-data 'D:\python文件\aa\min_max.m;.' --add-data 'D:\python文件\aa\xss-svm-model.m;.' window.py
