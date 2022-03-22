@@ -46,9 +46,38 @@ def run():
     lb4.configure(text=deal_lstm(var))
 
 
+def createNewWindow():
+    app = Tk()
+    app.title('数据描述')
+    app.geometry('700x700')
+    var = txt.get(0.0, END)
+    lb1 = Label(app, text='长度:  {}'.format(get_len(var)), font=('华文新魏', 16), width=20, height=2)
+    lb1.grid(column=0, row=0)
+    lb2 = Label(app, text='网址存在:  {}'.format(('是' if (get_url_count(var) == 1) else '否')), font=('华文新魏', 16), width=20,
+                height=2)
+    lb2.grid(column=0, row=2)
+    lb3 = Label(app, text='风险字:  {}'.format(get_evil_char(var)), font=('华文新魏', 16), width=20, height=2)
+    lb3.grid(column=0, row=4)
+    lb4 = Label(app, text='风险词:  {}'.format(get_evil_word(var)), font=('华文新魏', 16), width=20, height=2)
+    lb4.grid(column=0, row=6)
+    lb5 = Label(app, text='熵:  {}'.format(getshan(var)), font=('华文新魏', 16), width=20, height=2)
+    lb5.grid(column=0, row=8)
+    lb6 = Label(app, text='词向量:', font=('华文新魏', 16), width=20, height=2)
+    lb6.grid(column=0, row=10)
+    data_set = pd.DataFrame(columns=['cut_words'])
+    data_set = data_set.append([{'cut_words': GeneSeg(var)}], ignore_index=True)
+    tokenizer = joblib.load('../model/tokenizer.model')
+    X = tokenizer.texts_to_sequences(data_set['cut_words'].values)
+    X = sequence.pad_sequences(X, maxlen=350)
+    lb7 = Label(app, text='{}'.format(X[0]), font=('华文新魏', 16))
+    lb7.grid(row=11)
+    app.mainloop()
+
+
 if __name__ == '__main__':
     root = Tk()
     root.title('xss攻击识别')
+    root.geometry('800x250')
     # root.geometry('240x240')  # 这里的乘号不是 * ，而是小写英文字母 x
     lb = Label(root, text='请输入xss', font=('华文新魏', 16), width=20, height=2)
     lb.grid(column=0, columnspan=5)
@@ -66,4 +95,6 @@ if __name__ == '__main__':
     lb4.grid(column=4, row=4)
     btn1 = Button(root, text='submit', command=run)
     btn1.grid(column=2, row=5, columnspan=3)
+    btn2 = Button(root, text='describe', command=createNewWindow)
+    btn2.grid(column=0, row=5, columnspan=3)
     root.mainloop()
