@@ -181,7 +181,7 @@ if __name__ == '__main__':
     # X_validation = sequence.pad_sequences(X_test, maxlen=250, padding='post', truncating='post')
     # # print(X_train[0])
 
-    tokenizer = Tokenizer(num_words=30000, lower=True)
+    tokenizer = Tokenizer(num_words=80, lower=True)
     tokenizer.fit_on_texts(final_data['cut_words'].values)
     word_index = tokenizer.word_index
     print('共有 %s 个不相同的词语.' % len(word_index))
@@ -195,4 +195,4 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2)
     print(X_train.shape)
     joblib.dump(filename='../model/tokenizer.model', value=tokenizer)
-    train_lstm(30000, X_train, y_train, X_test, y_test, X_test)
+    train_lstm(80, X_train, y_train, X_test, y_test, X_test)

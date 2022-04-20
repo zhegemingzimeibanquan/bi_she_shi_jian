@@ -39,7 +39,8 @@ if __name__ == '__main__':
     Y = pd.get_dummies(final_data['label']).values
     Y_tru=final_data['label']
     # X = sequence.pad_sequences(X_l, maxlen=maxlen, padding='post')
-    model = load_model('../model/v_model_LSTM.h5')
+    model = load_model('./model/v_model_LSTM.h5')
+    # model = load_model('../model/v_model_LSTM.h5')
     y_pre = model.predict(X)
     y_pre_list=[]
     for x in y_pre:
