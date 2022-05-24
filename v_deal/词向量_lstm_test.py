@@ -3,6 +3,7 @@ import pandas as pd
 from keras.models import load_model
 from keras.preprocessing import sequence
 from sklearn.metrics import classification_report
+
 from url_deal import data_try as dt
 from word_cut import GeneSeg
 
@@ -37,14 +38,14 @@ if __name__ == '__main__':
     X = sequence.pad_sequences(X, maxlen=maxlen)
     # 经过上步操作后，此时X变成了numpy.ndarray
     Y = pd.get_dummies(final_data['label']).values
-    Y_tru=final_data['label']
+    Y_tru = final_data['label']
     # X = sequence.pad_sequences(X_l, maxlen=maxlen, padding='post')
     model = load_model('./model/v_model_LSTM.h5')
     # model = load_model('../model/v_model_LSTM.h5')
     y_pre = model.predict(X)
-    y_pre_list=[]
+    y_pre_list = []
     for x in y_pre:
-        if(x[0]>x[1]):
+        if (x[0] > x[1]):
             y_pre_list.append(0)
         else:
             y_pre_list.append(1)

@@ -1,10 +1,6 @@
 import joblib
-import numpy as np
-import pandas as pd
 from keras_preprocessing import sequence
-from numpy import reciprocal
-from sklearn.metrics import classification_report
-from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 from sklearn.svm import SVC
 
 from word_vector_deal import creat_data

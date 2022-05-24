@@ -1,8 +1,10 @@
 from tkinter import *
-from keras.models import load_model
+
 import joblib
 import pandas as pd
+from keras.models import load_model
 from keras.preprocessing import sequence
+
 from url_deal.data_deal import filter3
 from url_deal.url_futher import get_url_count, get_len, get_evil_word, get_evil_char, getshan
 from v_deal.word_cut import GeneSeg

@@ -10,6 +10,7 @@ def reversed_code(url_string_data):
     reversed_data = url_string_data[0].apply(lambda x: parse.unquote(x))
     return reversed_data
 
+
 def step1(xss, normal):
     re_xss = reversed_code(xss)
     re_normal = reversed_code(normal)
@@ -66,8 +67,5 @@ if __name__ == '__main__':
     data_set1['url'].apply(lambda x: re.sub(',', '', x))
     # (data_set1)
     final_data = pd.concat([data_set, data_set1], axis=0)
-    #final_data.to_csv('data/train_data1.csv')
-    #print(final_data)
-
-
-
+    # final_data.to_csv('data/train_data1.csv')
+    # print(final_data)

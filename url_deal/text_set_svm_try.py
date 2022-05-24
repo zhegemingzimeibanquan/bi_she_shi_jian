@@ -2,8 +2,8 @@ import joblib
 import pandas as pd
 from sklearn.metrics import classification_report
 
-from url_deal import data_deal as dd
 import data_try as dt
+from url_deal import data_deal as dd
 
 if __name__ == '__main__':
     test_xss = pd.read_table('../data/test_xss.txt', header=None)

@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split
 from tensorflow.python import keras
 from tensorflow.python.keras import optimizers
 from tensorflow.python.keras.layers import LSTM, Dense
-from tensorflow.python.keras.models import Sequential
 
 
 def build_model(hidden_layers,

@@ -1,8 +1,6 @@
-import joblib
 import pandas as pd
-from sklearn.metrics import classification_report
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.svm import SVC, LinearSVC
+from sklearn.model_selection import GridSearchCV
+from sklearn.svm import LinearSVC
 
 if __name__ == '__main__':
     data = pd.read_csv('../data/final_data_v1.csv')
